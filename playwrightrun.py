@@ -35,7 +35,7 @@ with sync_playwright() as p:
             current_datetime = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
             # Generate a hashed name for the file
-            hashed_name = hashlib.md5(url.encode()).hexdigest()
+            hashed_name = hashlib.md5(html_content.encode()).hexdigest()
 
             # Create directory structure: url > scrape date/time > hashed name for file
             directory_path = os.path.join(url.replace("https://", "").replace("http://", "").replace("/", "_"),
