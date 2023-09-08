@@ -1,0 +1,2 @@
+playwright==1.14.1  # As of my last update in September 2021; please check for the latest version
+beautifulsoup4==4.9.3  # As of my last update in September 2021; please check for the latest version
