@@ -14,18 +14,39 @@ logging.basicConfig(level=logging.INFO,
                     handlers=[logging.FileHandler("scraper.log"),
                               logging.StreamHandler()])
 
+
+
+
+
+import json
+import os
+import hashlib
+import requests
+import logging
+from datetime import datetime
+from playwright.sync_api import sync_playwright
+from bs4 import BeautifulSoup
+from google.cloud import storage
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, 
+                    format='%(asctime)s [%(levelname)s] %(message)s',
+                    handlers=[logging.FileHandler("scraper.log"),
+                              logging.StreamHandler()])
+
 # Initialize Google Cloud Storage
 storage_client = storage.Client()
-bucket_name = "bucketname"
+bucket_name = ""
 bucket = storage_client.get_bucket(bucket_name)
 
 # Slack webhook URL
-slack_webhook_url = "your_slack_webhook_url"
+slack_webhook_url = ""
 
-# Load URLs from the JSON file
-with open('urls.json', 'r') as f:
-    data = json.load(f)
-    urls = data['urls']
+# Read URLs from the JSON file in GCS
+json_blob = bucket.blob("")
+json_data = json_blob.download_as_text()
+data = json.loads(json_data)
+urls = data['urls']
 
 total_urls = len(urls)
 successful_scrapes = 0
