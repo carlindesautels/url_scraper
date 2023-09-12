@@ -8,31 +8,6 @@ from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 from google.cloud import storage
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, 
-                    format='%(asctime)s [%(levelname)s] %(message)s',
-                    handlers=[logging.FileHandler("scraper.log"),
-                              logging.StreamHandler()])
-
-
-
-
-
-import json
-import os
-import hashlib
-import requests
-import logging
-from datetime import datetime
-from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup
-from google.cloud import storage
-
-# Configure logging
-logging.basicConfig(level=logging.INFO, 
-                    format='%(asctime)s [%(levelname)s] %(message)s',
-                    handlers=[logging.FileHandler("scraper.log"),
-                              logging.StreamHandler()])
 
 # Initialize Google Cloud Storage
 storage_client = storage.Client()
